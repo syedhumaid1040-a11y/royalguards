@@ -16,6 +16,10 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Fix incompatible API call
+        run: |
+          find . -name "GuardManager.java" -exec sed -i 's/.*setShouldBurnInDaylight.*/\/\/ &/' {} +
+
       - name: Auto-detect and Build JAR
         run: |
           BUILD_FILE=$(find . -maxdepth 3 \( -name "pom.xml" -o -name "build.gradle" -o -name "build.gradle.kts" \) | head -n 1)
@@ -47,3 +51,4 @@ jobs:
         with:
           name: compiled-jar
           path: compiled_jars/*.jar
+
