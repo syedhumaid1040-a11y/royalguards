@@ -1,0 +1,21 @@
+name: RoyalGuard
+version: 1.0.0
+main: dev.royalguard.RoyalGuard
+api-version: '26.2'
+description: Player-model bodyguard bots with customisable PvP. Bedrock friendly, no dependencies.
+commands:
+  guard:
+    description: Manage your bodyguard
+    usage: /guard <spawn|remove|list|select|follow|stay|guard|bring|skin|rename|preset|set|info|gui|reload>
+    aliases: [bodyguard, bg]
+    permission: royalguard.use
+permissions:
+  royalguard.use:
+    description: Use /guard
+    default: true
+  royalguard.admin:
+    description: Reload the config
+    default: op
+  royalguard.unlimited:
+    description: Ignore the max-guards limit
+    default: op

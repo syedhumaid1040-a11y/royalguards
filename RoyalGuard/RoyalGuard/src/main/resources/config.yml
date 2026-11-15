@@ -1,0 +1,92 @@
+# RoyalGuard configuration
+
+max-guards: 2          # per player (royalguard.unlimited bypasses)
+respawn-seconds: 20    # delay before a fallen guard returns
+default-skin: MHF_Steve
+default-preset: normal
+
+# What each kind of viewer sees.
+#   mannequin = player-shaped Mannequin entity (skinned)
+#   mob       = the guard's real body mob (see body.brain-type)
+# Java players get the player model by default. Bedrock players (detected by
+# their Floodgate UUID, no Floodgate install needed) get the mob by default
+# because Mannequin rendering through Geyser is unconfirmed. Once you have
+# tested it with a real Bedrock client, you can switch bedrock to mannequin.
+appearance:
+  java: mannequin
+  bedrock: mob
+
+body:
+  brain-type: husk     # any mob type; husk does not burn in daylight
+  health: 40
+  # Starter loadout for newly spawned guards. Leave blank so players supply their
+  # own gear in the /guard inv menu. Dismissing a guard hands its items back, so a
+  # filled-in starter loadout would let players farm free gear.
+  gear:
+    helmet: ''
+    chestplate: ''
+    leggings: ''
+    boots: ''
+    mainhand: ''
+    offhand: ''
+
+# Combat presets. Every key can also be changed per guard with /guard set.
+#   damage    hit damage (half-hearts)        reach     attack range in blocks
+#   cooldown  ticks between swings            reaction  ticks before engaging a new target
+#   accuracy  0-1 chance a swing connects     detect    how far it notices enemies
+#   speed     movement speed multiplier       follow    distance it keeps from you
+#   teleport  distance before it warps to you mobs      attack hostile mobs on its own
+#   players   fight players who attack you    assist    join fights you start or are in
+presets:
+  casual:
+    damage: 3.0
+    reach: 2.8
+    cooldown: 20
+    reaction: 20
+    accuracy: 0.55
+    detect: 10.0
+    speed: 1.0
+    follow: 4.0
+    teleport: 28.0
+    mobs: true
+    players: false
+    assist: true
+  normal:
+    damage: 6.0
+    reach: 3.0
+    cooldown: 12
+    reaction: 8
+    accuracy: 0.8
+    detect: 14.0
+    speed: 1.2
+    follow: 3.5
+    teleport: 28.0
+    mobs: true
+    players: false
+    assist: true
+  sweaty:
+    damage: 8.0
+    reach: 3.2
+    cooldown: 9
+    reaction: 2
+    accuracy: 0.95
+    detect: 20.0
+    speed: 1.4
+    follow: 3.0
+    teleport: 32.0
+    mobs: true
+    players: true
+    assist: true
+  passive:
+    damage: 0.0
+    reach: 3.0
+    cooldown: 20
+    reaction: 20
+    accuracy: 0.0
+    detect: 0.0
+    speed: 1.2
+    follow: 3.5
+    teleport: 28.0
+    mobs: false
+    players: false
+    assist: false
